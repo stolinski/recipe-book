@@ -1,0 +1,22 @@
+<%= simple_form_for(@meal) do |f| %>
+  <% if @meal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@meal.errors.count, "error") %> prohibited this meal from being saved:</h2>
+
+      <ul>
+      <% @meal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.input :title, wrapper_html: { class: 'field' }, input_html: { class: 'text input' } %>
+    <%= f.input :type_id, :collection => Type.all, :selected => @meal.type_id  %>
+    <%= f.input :healthy, label: 'Is Healthy?' %>
+    <%= f.input :url, wrapper_html: { class: 'field' }, input_html: { class: 'text input' } %>
+    <%= f.input :notes, :as => :ckeditor, rows: 5, wrapper_html: { class: 'field' }, input_html: { rows: 7, class: 'textarea input' } %>
+  <div class="btn rounded metro medium primary">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,39 @@
+<div class="twelve columns">
+<h1>Listing meals</h1>
+
+<% @meals.each do |meal| %>
+
+    <div class="card">
+      <div class="card-title clearfix">
+      <h3 class="meal-name"><%= meal.title %>
+      <% if meal.healthy %> <i class="icon-leaf"></i><% end %>
+      </h3>
+      <h5 class="meal-type"><%= meal.type.name %></h5>
+      </div>
+      <div class="card-data">
+          <p>
+            <%=raw meal.notes %>
+          </p>
+                    <% if meal.url != "" %>
+            <div class="btn medium metro warning rounded">
+              <a target="_blank" href="<%= meal.url %>">View External Recipe</a>
+            </div>
+          <% end %>
+          <div class="edit">
+                <%= link_to(edit_meal_path(meal))  do %>
+                  <i class="icon-pencil"></i>
+                <% end %>
+                <%= link_to(meal, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+                  <i class="icon-cancel-squared"></i>
+                <% end %>
+              </div>
+      </div>
+    </div>
+<% end %>
+
+
+<br />
+<div class="btn medium metro primary rounded">
+<%= link_to 'New Meal', new_meal_path %>
+</div>
+</div>

@@ -1,0 +1,27 @@
+// Place all the styles related to the meals controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'compass';
+
+
+.card {
+	@include box-shadow(1px 1px 3px rgba(black, 0.2));
+	padding:10px 20px;
+	background: #eee;
+	border-bottom: solid 3px #ccc;
+	.card-title {
+		cursor:pointer;
+	}
+	.meal-name {
+		float:left;
+	}
+	.meal-type {
+		float:right;
+	}
+	.card-data {
+		display: none;
+	}
+	.edit {
+		float:right;
+	}
+}
